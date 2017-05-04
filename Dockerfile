@@ -44,4 +44,10 @@ RUN adduser -D -u 1000 node \
     && rm -Rf "node-v$NODE_VERSION" \
     && rm "node-v$NODE_VERSION.tar.xz" SHASUMS256.txt.asc SHASUMS256.txt
 
+ARG GIT_SHA
+ARG BUILD_FROM
+
+LABEL app.git_sha_on_build_time=${GIT_SHA} \
+      app.build_from=${BUILD_FROM}
+
 CMD [ "node" ]
